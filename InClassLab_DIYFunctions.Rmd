@@ -1,6 +1,6 @@
 ---
 title: "In Class Lab - DIY Functions"
-author: "Dr. Shoemaker"
+author: "Shaheer Ahmed"
 date: "DATA 2401"
 output: html_document
 ---
@@ -16,7 +16,11 @@ The questions from your notes today are below, please copy your answers them her
 1. Write your own function that takes the temperature in Fahrenheit as an argument and returns the Celcius equivalent. 
 
 ```{R}
-
+calc_f_to_c <- function(temp_in_f) {
+  (temp_in_f - 32)*5/9
+}
+calc_f_to_c(50)
+calc_f_to_c(100)
 
 ```
 
@@ -24,7 +28,12 @@ The questions from your notes today are below, please copy your answers them her
 
 
 ```{r}
-
+conversions <- function(temp_in_f, dist_in_feet) {
+  temp_in_c <- (temp_in_f - 32)*5/9
+  dist_in_meters <- dist_in_feet / 3.281
+  return(c(temp_in_c, dist_in_meters))
+}
+conversions(70, 60)
 
 ```
 
@@ -32,7 +41,18 @@ The questions from your notes today are below, please copy your answers them her
 3. Write a function that prints out a statement of whether the number passed as an argument is positive, negative or 0. 
 
 ```{R}
+number_checker <- function(any_number){
+  if (any_number > 0) {
+    print("This number is positive")
+  } else if (any_number == 0){
+    print("This number is 0")
+  } else {
+    print("This number is negative")}
+}
 
+number_checker(-10)
+number_checker(0)
+number_checker(10)
 
 ```
 
@@ -40,7 +60,17 @@ The questions from your notes today are below, please copy your answers them her
    + Don't use `abs()`. Use the flow from problem 1 and multiply by negative one as necessary. 
    
 ```{r}
+abs_value <- function(value) {
+  if (value >= 0) {
+    return(value)
+  } else {
+    return(value * -1)
+  }
+}
 
+abs_value(5)
+abs_value(-7)
+abs_value(0)
 
 ```
 
@@ -48,6 +78,21 @@ The questions from your notes today are below, please copy your answers them her
    + There are functions that check and return T/F: `is.numeric()` or `is.character()` would be relevant here
    
 ```{r}
+abs_value <- function(value) {
+  if (!is.numeric(value)) {
+    print("Please pass a numerical value to this function")
+    return(NULL)
+  }
+  
+  if (value >= 0) {
+    return(value)
+  } else {
+    return(value * -1)
+  }
+}
+
+abs_value("ten")
+abs_value(-10)
 
 
 
